@@ -70,7 +70,7 @@ const Register = () => {
                                 name="username"
                                 value={formData.username}
                                 onChange={handleChange}
-                                className="input-field pl-12"
+                                className="input-field pl-16"
                                 placeholder="jdoe"
                                 required
                             />
@@ -86,7 +86,7 @@ const Register = () => {
                                 name="email"
                                 value={formData.email}
                                 onChange={handleChange}
-                                className="input-field pl-12"
+                                className="input-field pl-16"
                                 placeholder="john@example.com"
                                 required
                             />
@@ -101,7 +101,7 @@ const Register = () => {
                                 name="role"
                                 value={formData.role}
                                 onChange={handleChange}
-                                className="input-field pl-12 appearance-none"
+                                className="input-field pl-16 appearance-none"
                             >
                                 <option value="Developer">Developer (Confidential)</option>
                                 <option value="Architect">Architect (Secret)</option>
@@ -119,7 +119,7 @@ const Register = () => {
                                 name="password"
                                 value={formData.password}
                                 onChange={handleChange}
-                                className="input-field pl-12"
+                                className="input-field pl-16"
                                 placeholder="••••••••"
                                 required
                             />

@@ -100,7 +100,7 @@ const Login = () => {
                                 type="text"
                                 value={username}
                                 onChange={(e) => setUsername(e.target.value)}
-                                className="input-field pl-12"
+                                className="input-field pl-16"
                                 placeholder="Enter your username"
                                 required
                                 disabled={loading}
@@ -116,7 +116,7 @@ const Login = () => {
                                 type="password"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
-                                className="input-field pl-12"
+                                className="input-field pl-16"
                                 placeholder="••••••••"
                                 required
                                 disabled={loading}

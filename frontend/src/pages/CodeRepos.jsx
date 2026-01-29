@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import api from '../services/api';
 import { FileCode, Lock, Plus, AlertOctagon } from 'lucide-react';
 import { motion } from 'framer-motion';
+import Editor from '@monaco-editor/react';
 
 const CodeRepos = () => {
     const [repos, setRepos] = useState([]);
@@ -29,6 +30,8 @@ const CodeRepos = () => {
             await api.post('/code/', newRepo);
             setIsCreating(false);
             fetchRepos();
+            // Reset form
+            setNewRepo({ name: '', description: '', classification: 'Unclassified', content: '' });
         } catch (e) {
             setError(e.response?.data?.detail || "Failed to create repo");
         }
@@ -41,6 +44,19 @@ const CodeRepos = () => {
             case 'Confidential': return 'bg-yellow-500 text-black';
             default: return 'bg-green-500 text-white';
         }
+    };
+
+    // Simple helper to guess language for syntax highlighting
+    const getLanguageFromFilename = (filename) => {
+        if (!filename) return 'javascript'; // default
+        const ext = filename.split('.').pop().toLowerCase();
+        const map = {
+            'js': 'javascript', 'jsx': 'javascript', 'ts': 'typescript', 'tsx': 'typescript',
+            'py': 'python', 'java': 'java', 'c': 'c', 'cpp': 'cpp', 'html': 'html',
+            'css': 'css', 'json': 'json', 'md': 'markdown', 'sql': 'sql', 'go': 'go',
+            'rs': 'rust', 'rb': 'ruby', 'php': 'php', 'sh': 'shell'
+        };
+        return map[ext] || 'plaintext';
     };
 
     return (
@@ -57,7 +73,7 @@ const CodeRepos = () => {
                     <h3 className="text-lg font-bold mb-4">Create New Repo</h3>
                     {error && <div className="text-red-400 text-sm mb-4 flex items-center gap-2"><AlertOctagon size={16} /> {error}</div>}
                     <form onSubmit={handleCreate} className="space-y-4">
-                        <input type="text" placeholder="Repo Name" className="input-field"
+                        <input type="text" placeholder="Repo Name (e.g., script.py)" className="input-field"
                             value={newRepo.name} onChange={e => setNewRepo({ ...newRepo, name: e.target.value })} required />
                         <input type="text" placeholder="Description" className="input-field"
                             value={newRepo.description} onChange={e => setNewRepo({ ...newRepo, description: e.target.value })} />
@@ -67,8 +83,23 @@ const CodeRepos = () => {
                             <option value="Secret">Secret</option>
                             <option value="Top Secret">Top Secret</option>
                         </select>
-                        <textarea placeholder="Initial Code Content" className="input-field min-h-[100px]"
-                            value={newRepo.content} onChange={e => setNewRepo({ ...newRepo, content: e.target.value })} ></textarea>
+
+                        <div className="border border-slate-700 rounded-lg overflow-hidden">
+                            <Editor
+                                height="300px"
+                                language={getLanguageFromFilename(newRepo.name)}
+                                theme="vs-dark"
+                                value={newRepo.content}
+                                onChange={(value) => setNewRepo({ ...newRepo, content: value || '' })}
+                                options={{
+                                    minimap: { enabled: false },
+                                    fontSize: 14,
+                                    scrollBeyondLastLine: false,
+                                }}
+                            />
+                        </div>
+                        <p className="text-xs text-slate-400">Language inferred from filename extension.</p>
+
                         <button className="btn-primary">Create</button>
                     </form>
                 </motion.div>
@@ -77,7 +108,7 @@ const CodeRepos = () => {
             <div className="grid grid-cols-1 gap-4">
                 {repos.map(repo => (
                     <motion.div key={repo.id} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={`glass-panel p-6 border-l-4 ${repo.can_read ? 'border-primary-500' : 'border-red-500'}`}>
-                        <div className="flex justify-between items-start">
+                        <div className="flex justify-between items-start mb-4">
                             <div>
                                 <div className="flex items-center gap-2">
                                     <h3 className="text-xl font-bold">{repo.name}</h3>
@@ -91,12 +122,31 @@ const CodeRepos = () => {
                             {repo.can_read && <FileCode className="text-primary-500" />}
                         </div>
 
-                        <div className="mt-4 bg-slate-900 p-4 rounded-lg font-mono text-sm overflow-x-auto text-slate-300">
-                            {repo.content || <span className="italic text-slate-600">No content available</span>}
-                        </div>
-                        <div className="mt-2 text-xs text-slate-500">
-                            Access: {repo.can_read ? "READ ALLOWED" : "READ DENIED"} |
-                            Write: {repo.can_write ? "WRITE ALLOWED" : "WRITE DENIED"}
+                        {repo.can_read ? (
+                            <div className="border border-slate-700 rounded-lg overflow-hidden">
+                                <Editor
+                                    height="200px"
+                                    language={getLanguageFromFilename(repo.name)}
+                                    theme="vs-dark"
+                                    value={repo.content}
+                                    options={{
+                                        readOnly: true,
+                                        minimap: { enabled: false },
+                                        fontSize: 13,
+                                        scrollBeyondLastLine: false,
+                                        domReadOnly: true
+                                    }}
+                                />
+                            </div>
+                        ) : (
+                            <div className="bg-slate-900 p-4 rounded-lg text-red-400 italic text-sm flex items-center gap-2">
+                                <Lock size={16} /> [REDACTED: INSUFFICIENT CLEARANCE]
+                            </div>
+                        )}
+
+                        <div className="mt-2 text-xs text-slate-500 flex justify-end gap-3">
+                            <span>Access: {repo.can_read ? "READ ALLOWED" : "READ DENIED"}</span>
+                            <span>Write: {repo.can_write ? "WRITE ALLOWED" : "WRITE DENIED"}</span>
                         </div>
                     </motion.div>
                 ))}
