@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.database import engine, Base
-from app.routes import auth_routes
+from app.routes import auth_routes, code_routes, crypto_routes, utils_routes
 
 # Create DB tables
 Base.metadata.create_all(bind=engine)
@@ -23,6 +23,9 @@ app.add_middleware(
 )
 
 app.include_router(auth_routes.router, prefix="/api/auth", tags=["Authentication"])
+app.include_router(code_routes.router, prefix="/api/code", tags=["Code Repository"])
+app.include_router(crypto_routes.router, prefix="/api/crypto", tags=["Cryptography"])
+app.include_router(utils_routes.router, prefix="/api/utils", tags=["Utils"])
 
 @app.get("/")
 def read_root():
