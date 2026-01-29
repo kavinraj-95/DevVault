@@ -1,0 +1,270 @@
+INFO:     Will watch for changes in these directories: ['/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend']
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [23633] using StatReload
+INFO:     Started server process [23647]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:37348 - "OPTIONS /api/auth/register HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37358 - "POST /api/auth/register HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37358 - "OPTIONS /api/auth/mfa/setup?username=Kavin HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37348 - "POST /api/auth/mfa/setup?username=Kavin HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/uvicorn/protocols/http/h11_impl.py", line 410, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/fastapi/applications.py", line 1135, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/fastapi/routing.py", line 115, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/fastapi/routing.py", line 101, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/fastapi/routing.py", line 355, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/fastapi/routing.py", line 245, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/starlette/concurrency.py", line 32, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/anyio/to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 2502, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/app/routes/auth_routes.py", line 57, in setup_mfa
+    qr = generate_qr_code_base64(uri)
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/app/services/authentication/mfa_service.py", line 17, in generate_qr_code_base64
+    img = qrcode.make(uri)
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/qrcode/main.py", line 25, in make
+    return qr.make_image()
+           ~~~~~~~~~~~~~^^
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/qrcode/main.py", line 364, in make_image
+    from qrcode.image.pil import Image, PilImage
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/qrcode/image/pil.py", line 2, in <module>
+    from PIL import Image, ImageDraw
+ModuleNotFoundError: No module named 'PIL'
+INFO:     127.0.0.1:37358 - "OPTIONS /api/code/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45908 - "OPTIONS /api/code/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45916 - "GET /api/code/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:45916 - "GET /api/code/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37750 - "OPTIONS /api/code/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37762 - "POST /api/code/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37762 - "GET /api/code/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40600 - "POST /api/code/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40600 - "GET /api/code/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:37272 - "POST /api/auth/mfa/setup?username=Kavin HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/uvicorn/protocols/http/h11_impl.py", line 410, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/fastapi/applications.py", line 1135, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/fastapi/routing.py", line 115, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/fastapi/routing.py", line 101, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/fastapi/routing.py", line 355, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/fastapi/routing.py", line 245, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/starlette/concurrency.py", line 32, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/anyio/to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 2502, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/app/routes/auth_routes.py", line 57, in setup_mfa
+    qr = generate_qr_code_base64(uri)
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/app/services/authentication/mfa_service.py", line 17, in generate_qr_code_base64
+    img = qrcode.make(uri)
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/qrcode/main.py", line 25, in make
+    return qr.make_image()
+           ~~~~~~~~~~~~~^^
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/qrcode/main.py", line 364, in make_image
+    from qrcode.image.pil import Image, PilImage
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/qrcode/image/pil.py", line 2, in <module>
+    from PIL import Image, ImageDraw
+ModuleNotFoundError: No module named 'PIL'
+INFO:     127.0.0.1:37276 - "POST /api/auth/mfa/setup?username=Kavin HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/uvicorn/protocols/http/h11_impl.py", line 410, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/fastapi/applications.py", line 1135, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/starlette/applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/fastapi/routing.py", line 115, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/fastapi/routing.py", line 101, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/fastapi/routing.py", line 355, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/fastapi/routing.py", line 245, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/starlette/concurrency.py", line 32, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/anyio/to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 2502, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/app/routes/auth_routes.py", line 57, in setup_mfa
+    qr = generate_qr_code_base64(uri)
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/app/services/authentication/mfa_service.py", line 17, in generate_qr_code_base64
+    img = qrcode.make(uri)
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/qrcode/main.py", line 25, in make
+    return qr.make_image()
+           ~~~~~~~~~~~~~^^
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/qrcode/main.py", line 364, in make_image
+    from qrcode.image.pil import Image, PilImage
+  File "/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend/.venv/lib/python3.13/site-packages/qrcode/image/pil.py", line 2, in <module>
+    from PIL import Image, ImageDraw
+ModuleNotFoundError: No module named 'PIL'

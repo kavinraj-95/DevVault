@@ -15,6 +15,7 @@ const Dashboard = () => {
             setMfaData(response.data);
         } catch (e) {
             console.error(e);
+            alert("Failed to setup MFA: " + (e.response?.data?.detail || e.message));
         }
     };
 
