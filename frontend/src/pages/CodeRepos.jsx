@@ -4,10 +4,28 @@ import { FileCode, Lock, Plus, AlertOctagon } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Editor from '@monaco-editor/react';
 
+const LANGUAGES = [
+    { id: 'javascript', name: 'JavaScript', ext: 'js' },
+    { id: 'typescript', name: 'TypeScript', ext: 'ts' },
+    { id: 'python', name: 'Python', ext: 'py' },
+    { id: 'java', name: 'Java', ext: 'java' },
+    { id: 'cpp', name: 'C++', ext: 'cpp' },
+    { id: 'c', name: 'C', ext: 'c' },
+    { id: 'html', name: 'HTML', ext: 'html' },
+    { id: 'css', name: 'CSS', ext: 'css' },
+    { id: 'json', name: 'JSON', ext: 'json' },
+    { id: 'sql', name: 'SQL', ext: 'sql' },
+    { id: 'markdown', name: 'Markdown', ext: 'md' },
+    { id: 'shell', name: 'Shell Script', ext: 'sh' },
+    { id: 'go', name: 'Go', ext: 'go' },
+    { id: 'rust', name: 'Rust', ext: 'rs' },
+    { id: 'php', name: 'PHP', ext: 'php' },
+];
+
 const CodeRepos = () => {
     const [repos, setRepos] = useState([]);
     const [isCreating, setIsCreating] = useState(false);
-    const [newRepo, setNewRepo] = useState({ name: '', description: '', classification: 'Unclassified', content: '' });
+    const [newRepo, setNewRepo] = useState({ name: '', description: '', classification: 'Unclassified', content: '', language: 'javascript' });
     const [error, setError] = useState('');
 
     useEffect(() => {
@@ -31,10 +49,36 @@ const CodeRepos = () => {
             setIsCreating(false);
             fetchRepos();
             // Reset form
-            setNewRepo({ name: '', description: '', classification: 'Unclassified', content: '' });
+            setNewRepo({ name: '', description: '', classification: 'Unclassified', content: '', language: 'javascript' });
         } catch (e) {
             setError(e.response?.data?.detail || "Failed to create repo");
         }
+    };
+
+    const handleLanguageChange = (e) => {
+        const selectedLangId = e.target.value;
+        const langConfig = LANGUAGES.find(l => l.id === selectedLangId);
+
+        // Update language
+        let updatedRepo = { ...newRepo, language: selectedLangId };
+
+        // Auto-update extension if name is empty or has an extension
+        if (langConfig) {
+            const currentName = newRepo.name;
+            if (!currentName) {
+                // If empty, don't force a name yet, or maybe a placeholder logic
+            } else if (currentName.includes('.')) {
+                // Replace extension
+                const parts = currentName.split('.');
+                parts.pop(); // remove old ext
+                parts.push(langConfig.ext);
+                updatedRepo.name = parts.join('.');
+            } else {
+                // Append extension
+                updatedRepo.name = `${currentName}.${langConfig.ext}`;
+            }
+        }
+        setNewRepo(updatedRepo);
     };
 
     const getBadgeColor = (level) => {
@@ -73,8 +117,17 @@ const CodeRepos = () => {
                     <h3 className="text-lg font-bold mb-4">Create New Repo</h3>
                     {error && <div className="text-red-400 text-sm mb-4 flex items-center gap-2"><AlertOctagon size={16} /> {error}</div>}
                     <form onSubmit={handleCreate} className="space-y-4">
-                        <input type="text" placeholder="Repo Name (e.g., script.py)" className="input-field"
-                            value={newRepo.name} onChange={e => setNewRepo({ ...newRepo, name: e.target.value })} required />
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <input type="text" placeholder="Repo Name (e.g., script.py)" className="input-field"
+                                value={newRepo.name} onChange={e => setNewRepo({ ...newRepo, name: e.target.value })} required />
+
+                            <select className="input-field" value={newRepo.language} onChange={handleLanguageChange}>
+                                {LANGUAGES.map(lang => (
+                                    <option key={lang.id} value={lang.id}>{lang.name}</option>
+                                ))}
+                            </select>
+                        </div>
+
                         <input type="text" placeholder="Description" className="input-field"
                             value={newRepo.description} onChange={e => setNewRepo({ ...newRepo, description: e.target.value })} />
                         <select className="input-field" value={newRepo.classification} onChange={e => setNewRepo({ ...newRepo, classification: e.target.value })}>
@@ -87,7 +140,7 @@ const CodeRepos = () => {
                         <div className="border border-slate-700 rounded-lg overflow-hidden">
                             <Editor
                                 height="300px"
-                                language={getLanguageFromFilename(newRepo.name)}
+                                language={newRepo.language}
                                 theme="vs-dark"
                                 value={newRepo.content}
                                 onChange={(value) => setNewRepo({ ...newRepo, content: value || '' })}
@@ -98,7 +151,7 @@ const CodeRepos = () => {
                                 }}
                             />
                         </div>
-                        <p className="text-xs text-slate-400">Language inferred from filename extension.</p>
+                        <p className="text-xs text-slate-400">Language: {newRepo.language} (matches extension)</p>
 
                         <button className="btn-primary">Create</button>
                     </form>
