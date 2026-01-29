@@ -49,6 +49,22 @@ const Dashboard = () => {
                         {mfaStatus && <div className="text-green-400 mt-2">{mfaStatus}</div>}
                     </div>
                 </div>
+
+                <a href="/repos" className="glass-panel p-6 hover:bg-white/5 transition-colors cursor-pointer group">
+                    <div className="flex items-center gap-3 mb-4">
+                        <Lock className="text-emerald-400 group-hover:scale-110 transition-transform" />
+                        <h3 className="text-xl font-semibold">Code Repositories</h3>
+                    </div>
+                    <p className="text-slate-400">Access secure repositories based on your clearance level.</p>
+                </a>
+
+                <a href="/crypto" className="glass-panel p-6 hover:bg-white/5 transition-colors cursor-pointer group">
+                    <div className="flex items-center gap-3 mb-4">
+                        <AlertTriangle className="text-purple-400 group-hover:scale-110 transition-transform" />
+                        <h3 className="text-xl font-semibold">Cryptography Lab</h3>
+                    </div>
+                    <p className="text-slate-400">Experiment with Post-Quantum & Threshold Cryptography.</p>
+                </a>
             </div>
 
             {mfaData && (

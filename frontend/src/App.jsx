@@ -4,6 +4,8 @@ import { AuthProvider, useAuth } from './context/AuthContext';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
+import CodeRepos from './pages/CodeRepos';
+import CryptoLab from './pages/CryptoLab';
 
 const ProtectedRoute = ({ children }) => {
   const { isAuthenticated, loading } = useAuth();
@@ -29,6 +31,22 @@ function App() {
             element={
               <ProtectedRoute>
                 <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/repos"
+            element={
+              <ProtectedRoute>
+                <CodeRepos />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/crypto"
+            element={
+              <ProtectedRoute>
+                <CryptoLab />
               </ProtectedRoute>
             }
           />
