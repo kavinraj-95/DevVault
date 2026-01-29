@@ -1,9 +1,19 @@
 INFO:     Will watch for changes in these directories: ['/home/kavinraj_95/6th-Sem/Cyber-Security/Lab-Eval-1/project1/DevVault/backend']
 INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
-INFO:     Started reloader process [10635] using StatReload
-INFO:     Started server process [10649]
+INFO:     Started reloader process [38607] using StatReload
+INFO:     Started server process [38614]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
-INFO:     127.0.0.1:48888 - "GET /api/code/ HTTP/1.1" 200 OK
-INFO:     127.0.0.1:48892 - "GET /api/code/ HTTP/1.1" 200 OK
-INFO:     127.0.0.1:50462 - "GET /api/code/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46766 - "OPTIONS /api/code/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46780 - "OPTIONS /api/code/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:46780 - "GET /api/code/ HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:46766 - "GET /api/code/ HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:46782 - "GET /api/code/ HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:46786 - "GET /api/code/ HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:60554 - "OPTIONS /api/code/ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60554 - "POST /api/code/ HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:54920 - "POST /api/code/ HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53078 - "POST /api/code/ HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53078 - "POST /api/code/ HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53078 - "POST /api/code/ HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:58310 - "POST /api/code/ HTTP/1.1" 401 Unauthorized

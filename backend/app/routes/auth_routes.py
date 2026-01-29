@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from app.database import get_db
-from app.models.user import User
+from app.models.user import User, ClearanceLevel
 from app.schemas import UserCreate, UserLogin, Token, MFAVerify, MFASetupResponse
 from app.services.authentication.password_auth import get_password_hash, verify_password
 from app.services.authentication.jwt_handler import create_access_token
@@ -16,11 +16,18 @@ def register(user: UserCreate, db: Session = Depends(get_db)):
         raise HTTPException(status_code=400, detail="Username already registered")
     
     hashed_password = get_password_hash(user.password)
+    
+    # Assign clearance based on role
+    clearance = ClearanceLevel.UNCLASSIFIED
+    if user.role == "Admin":
+        clearance = ClearanceLevel.TOP_SECRET
+        
     new_user = User(
         username=user.username,
         email=user.email,
         hashed_password=hashed_password,
-        role=user.role
+        role=user.role,
+        clearance_level=clearance
     )
     db.add(new_user)
     db.commit()
